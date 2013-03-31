@@ -75,15 +75,17 @@ SW_BOARD_GSENSOR_DIRECT_Z := true
 SW_BOARD_GSENSOR_XY_REVERT := false 
 
 # Wifi stuff
-BOARD_WIFI_VENDOR := realtek
+WIFI_DRIVER 			 := rtl8192cu
+BOARD_WIFI_VENDOR 		 := realtek
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
+CONFIG_DRIVER_WEXT 		 :=y
 BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
-#BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_rtl
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_rtl
 BOARD_HOSTAPD_DRIVER             := NL80211
-#BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_rtl
-
+BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_rtl
+WIFI_DRIVER_FW_PATH_STA 	 := none
 BOARD_WLAN_DEVICE                := rtl8192cu
-
+WIFI_DRIVER_MODULE_ARG 		 := "ifname=wlan0 if2name=p2p0"
 WIFI_DRIVER_MODULE_PATH          := "/system/vendor/modules/8192cu.ko"
 WIFI_DRIVER_MODULE_NAME          := 8192cu
 
