@@ -63,7 +63,8 @@ USE_CAMERA_STUB := false
 BOARD_CAMERA_HAVE_FLASH := false
 
 #audio
-BOARD_USES_GENERIC_AUDIO := true
+#BOARD_USES_GENERIC_AUDIO := true
+BOARD_USES_AUDIO_LEGACY := true
 #BOARD_USES_ALSA_AUDIO := false
 
 #sensors
@@ -77,13 +78,13 @@ SW_BOARD_GSENSOR_XY_REVERT := false
 BOARD_WIFI_VENDOR := realtek
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
 BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_rtl
+#BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_rtl
 BOARD_HOSTAPD_DRIVER             := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_rtl
+#BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_rtl
 
 BOARD_WLAN_DEVICE                := rtl8192cu
 
 WIFI_DRIVER_MODULE_PATH          := "/system/vendor/modules/8192cu.ko"
 WIFI_DRIVER_MODULE_NAME          := 8192cu
 
-TARGET_CUSTOM_WIFI := libraries/wlan/wifi_realtek.c
+#TARGET_CUSTOM_WIFI := libraries/wlan/wifi_realtek.c
