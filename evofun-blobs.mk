@@ -14,20 +14,20 @@
 
 # /system/bin
 PRODUCT_COPY_FILES += \
-	device/allwinner/evofun/prebuilt/bin/fsck.exfat:system/bin/fsck.exfat \
-	device/allwinner/evofun/prebuilt/bin/mkfs.exfat:system/bin/mkfs.exfat \
-	device/allwinner/evofun/prebuilt/bin/mount.exfat:system/bin/mount.exfat \
-	device/allwinner/evofun/prebuilt/bin/ntfs-3g:system/bin/ntfs-3g \
-	device/allwinner/evofun/prebuilt/bin/ntfs-3g.probe:system/bin/ntfs-3g.probe \
-	device/allwinner/evofun/prebuilt/bin/mkntfs:system/bin/mkntfs \
+#	device/allwinner/evofun/prebuilt/bin/fsck.exfat:system/bin/fsck.exfat \
+#	device/allwinner/evofun/prebuilt/bin/mkfs.exfat:system/bin/mkfs.exfat \
+#	device/allwinner/evofun/prebuilt/bin/mount.exfat:system/bin/mount.exfat \
+#	device/allwinner/evofun/prebuilt/bin/ntfs-3g:system/bin/ntfs-3g \
+#	device/allwinner/evofun/prebuilt/bin/ntfs-3g.probe:system/bin/ntfs-3g.probe \
+#	device/allwinner/evofun/prebuilt/bin/mkntfs:system/bin/mkntfs \
 	device/allwinner/evofun/prebuilt/bin/reboot-recovery.sh:system/bin/reboot-recovery.sh \
 	device/allwinner/evofun/prebuilt/bin/usb_modeswitch:system/bin/usb_modeswitch \
 
 # /system/etc
 PRODUCT_COPY_FILES += \
-	device/allwinner/evofun/prebuilt/etc/ppp/ip-down:system/etc/ppp/ip-down \
-	device/allwinner/evofun/prebuilt/etc/ppp/ip-up:system/etc/ppp/ip-up \
-	device/allwinner/evofun/prebuilt/etc/ppp/call-pppd:system/etc/ppp/call-pppd \
+#	device/allwinner/evofun/prebuilt/etc/ppp/ip-down:system/etc/ppp/ip-down \
+#	device/allwinner/evofun/prebuilt/etc/ppp/ip-up:system/etc/ppp/ip-up \
+#	device/allwinner/evofun/prebuilt/etc/ppp/call-pppd:system/etc/ppp/call-pppd \
 	device/allwinner/evofun/prebuilt/etc/3g_dongle.cfg:system/etc/3g_dongle.cfg \
 	device/allwinner/evofun/prebuilt/etc/camera.cfg:system/etc/camera.cfg \
 	device/allwinner/evofun/prebuilt/etc/gps.conf:system/etc/gps.conf \
