@@ -600,6 +600,12 @@ service mdnsd /system/bin/mdnsd
     socket mdnsd stream 0660 mdnsr inet
     disabled
     oneshot
+    
+service wpa_supplicant /system/bin/wpa_supplicant -Dnl80211 -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf
+    socket wpa_wlan0 dgram 660 wifi wifi
+    group wifi inet
+    disabled
+    oneshot
 
 on property:sys.boot_completed=1
     class_start troy
