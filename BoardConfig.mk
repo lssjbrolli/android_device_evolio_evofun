@@ -85,4 +85,4 @@ BOARD_WLAN_DEVICE                := rtl8192cu
 WIFI_DRIVER_MODULE_PATH          := "/system/vendor/modules/8192cu.ko"
 WIFI_DRIVER_MODULE_NAME          := 8192cu
 
-TARGET_CUSTOM_WIFI := ../../hardware/realtek/wlan/wifi_realtek.c
+TARGET_CUSTOM_WIFI := libraries/wlan/wifi_realtek.c
