@@ -13,7 +13,7 @@ TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
 ARCH_ARM_HAVE_TLS_REGISTER := true
 ARCH_ARM_HAVE_NEON := true
 
-BOARD_KERNEL_CMDLINE := console=ttyS0,115200 rw init=/init loglevel=3
+BOARD_KERNEL_CMDLINE := console=ttyS0,115200 rw init=/init loglevel=8
 BOARD_KERNEL_BASE := 0x40000000
 BOARD_KERNEL_PAGESIZE := 2048
 
@@ -38,12 +38,14 @@ TARGET_RECOVERY_INITRC := device/allwinner/evofun/recovery_init.rc
 #Misc stuff
 TARGET_RECOVERY_PRE_COMMAND := "echo -n boot-recovery | busybox dd of=/dev/block/nandf count=1 conv=sync; sync"
 TARGET_PROVIDES_INIT_RC := true
-TARGET_HARDWARE_INCLUDE := $(TOP)/device/allwinner/evofun/libraries/include
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/allwinner/evofun/releasetools/907_ota_from_target_files
+TARGET_HARDWARE_INCLUDE := device/allwinner/evofun/hardware/include
+TARGET_SPECIFIC_HEADER_PATH := device/allwinner/evofun/hardware/include
 COMMON_GLOBAL_CFLAGS += "-DICS_CAMERA_BLOB -DICS_AUDIO_BLOB"
 BOARD_HAVE_BLUETOOTH := false
-BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/allwinner/evofun/vibrator.c
+#BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/allwinner/evofun/vibrator.c
 BOARD_USE_LEGACY_TOUCHSCREEN := true
+BOARD_USES_GPS_TYPE := haiweixun
+BOARD_USES_PRIV_HARDWARE_LEGACY := true
 
 # Bootanimation
 TARGET_BOOTANIMATION_PRELOAD := true
@@ -69,10 +71,10 @@ BOARD_USES_AUDIO_LEGACY := true
 
 #sensors
 SW_BOARD_USES_GSENSOR_TYPE := mma7660
-SW_BOARD_GSENSOR_DIRECT_X := true 
-SW_BOARD_GSENSOR_DIRECT_Y := true
-SW_BOARD_GSENSOR_DIRECT_Z := true
-SW_BOARD_GSENSOR_XY_REVERT := false 
+#SW_BOARD_GSENSOR_DIRECT_X := true 
+#SW_BOARD_GSENSOR_DIRECT_Y := true
+#SW_BOARD_GSENSOR_DIRECT_Z := true
+#SW_BOARD_GSENSOR_XY_REVERT := false 
 
 # Wifi stuff
 WIFI_DRIVER 			 := rtl8192cu
@@ -88,5 +90,3 @@ BOARD_WLAN_DEVICE                := rtl8192cu
 WIFI_DRIVER_MODULE_ARG 		 := "ifname=wlan0 if2name=p2p0"
 WIFI_DRIVER_MODULE_PATH          := "/system/vendor/modules/8192cu.ko"
 WIFI_DRIVER_MODULE_NAME          := 8192cu
-
-#TARGET_CUSTOM_WIFI := libraries/wlan/wifi_realtek.c

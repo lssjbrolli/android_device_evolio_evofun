@@ -15,4 +15,3 @@
 #
 
 add_lunch_combo full_evofun-userdebug
-add_lunch_combo cm_evofun-userdebug

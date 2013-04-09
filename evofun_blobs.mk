@@ -14,26 +14,20 @@
 
 # /system/bin
 PRODUCT_COPY_FILES += \
-#	device/allwinner/evofun/prebuilt/bin/fsck.exfat:system/bin/fsck.exfat \
-#	device/allwinner/evofun/prebuilt/bin/mkfs.exfat:system/bin/mkfs.exfat \
-#	device/allwinner/evofun/prebuilt/bin/mount.exfat:system/bin/mount.exfat \
-#	device/allwinner/evofun/prebuilt/bin/ntfs-3g:system/bin/ntfs-3g \
-#	device/allwinner/evofun/prebuilt/bin/ntfs-3g.probe:system/bin/ntfs-3g.probe \
-#	device/allwinner/evofun/prebuilt/bin/mkntfs:system/bin/mkntfs \
 	device/allwinner/evofun/prebuilt/bin/reboot-recovery.sh:system/bin/reboot-recovery.sh \
-	device/allwinner/evofun/prebuilt/bin/usb_modeswitch:system/bin/usb_modeswitch \
+	device/allwinner/evofun/prebuilt/bin/usb_modeswitch:system/bin/usb_modeswitch 
 
 # /system/etc
 PRODUCT_COPY_FILES += \
-#	device/allwinner/evofun/prebuilt/etc/ppp/ip-down:system/etc/ppp/ip-down \
-#	device/allwinner/evofun/prebuilt/etc/ppp/ip-up:system/etc/ppp/ip-up \
-#	device/allwinner/evofun/prebuilt/etc/ppp/call-pppd:system/etc/ppp/call-pppd \
 	device/allwinner/evofun/prebuilt/etc/3g_dongle.cfg:system/etc/3g_dongle.cfg \
 	device/allwinner/evofun/prebuilt/etc/camera.cfg:system/etc/camera.cfg \
 	device/allwinner/evofun/prebuilt/etc/gps.conf:system/etc/gps.conf \
 	device/allwinner/evofun/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
 	device/allwinner/evofun/prebuilt/etc/usb_modeswitch.sh:system/etc/usb_modeswitch.sh \
-	device/allwinner/evofun/prebuilt/etc/vold.fstab:system/etc/vold.fstab
+	device/allwinner/evofun/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
+	device/allwinner/evofun/prebuilt/etc/ppp/ip-down:system/etc/ppp/ip-down \
+	device/allwinner/evofun/prebuilt/etc/ppp/ip-up:system/etc/ppp/ip-up \
+	device/allwinner/evofun/prebuilt/etc/ppp/call-pppd:system/etc/ppp/call-pppd
 
 PRODUCT_COPY_FILES += \
 	$(call find-copy-subdir-files,*,device/allwinner/evofun/prebuilt/etc/usb_modeswitch.d,system/etc/usb_modeswitch.d)
@@ -41,7 +35,6 @@ PRODUCT_COPY_FILES += \
 # /system/lib
 PRODUCT_COPY_FILES += \
 	device/allwinner/evofun/prebuilt/lib/egl/libEGL_mali.so:system/lib/egl/libEGL_mali.so \
-	device/allwinner/evofun/prebuilt/lib/egl/libGLES_android.so:system/lib/egl/libGLES_android.so \
 	device/allwinner/evofun/prebuilt/lib/egl/libGLESv1_CM_mali.so:system/lib/egl/libGLESv1_CM_mali.so \
 	device/allwinner/evofun/prebuilt/lib/egl/libGLESv2_mali.so:system/lib/egl/libGLESv2_mali.so \
 	device/allwinner/evofun/prebuilt/lib/liballwinner-ril.so:system/lib/liballwinner-ril.so \
@@ -71,4 +64,4 @@ $(shell touch out/target/product/evofun/obj/SHARED_LIBRARIES/libUMP_intermediate
 PRODUCT_COPY_FILES += device/allwinner/evofun/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml
 
 # Audio policy
-PRODUCT_COPY_FILES += device/allwinner/evofun/libraries/audio/audio_policy.conf:system/etc/audio_policy.conf
+PRODUCT_COPY_FILES += device/allwinner/evofun/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf

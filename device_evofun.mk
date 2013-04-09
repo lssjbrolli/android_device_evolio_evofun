@@ -1,9 +1,8 @@
 PRODUCT_COPY_FILES := \
 	device/allwinner/evofun/init.rc:root/init.rc \
-	device/allwinner/evofun/initlogo.rle:root/initlogo.rle \
 	device/allwinner/evofun/ueventd.rc:root/ueventd.rc \
-	device/allwinner/evofun/modules/nand.ko:root/nand.ko \
-	device/allwinner/evofun/modules/sun4i-keyboard.ko:root/sun4i-keyboard.ko
+	device/allwinner/evofun/prebuilt/vendor/modules/nand.ko:root/nand.ko \
+	device/allwinner/evofun/prebuilt/vendor/modules/sun4i-keyboard.ko:root/sun4i-keyboard.ko 	
 
 PRODUCT_CHARACTERISTICS := tablet
 
@@ -56,9 +55,7 @@ PRODUCT_COPY_FILES += \
 
 # EXT4 Support
 PRODUCT_PACKAGES += \
-	make_ext4fs \
-	e2fsck \
-	setup_fs
+	ext4_utils
 	
 # Hardware support
 PRODUCT_PACKAGES += \
@@ -66,7 +63,7 @@ PRODUCT_PACKAGES += \
 	audio_policy.default \
 	audio.a2dp.default \
 	audio.usb.default \
-	display.sun4i \
+	display \
 	gralloc.sun4i \
 	hwcomposer.sun4i \
 	lights.sun4i \

@@ -1,5 +1,3 @@
-import init.trace.rc
-
 on early-init
 # Set init and its forked children's oom_adj.
     write /proc/1/oom_adj -16
@@ -30,11 +28,10 @@ loglevel 6
     mkdir /emmc 0000 system system
     mkdir /uhost 0000 system system
     export BOOTCLASSPATH /system/framework/core.jar:/system/framework/core-junit.jar:/system/framework/bouncycastle.jar:/system/framework/ext.jar:/system/framework/framework.jar:/system/framework/framework2.jar:/system/framework/android.policy.jar:/system/framework/services.jar:/system/framework/apache-xml.jar
-
+    
 # Backward compatibility
     insmod /nand.ko
     symlink /system/etc /etc
-    symlink /sys/kernel/debug /d
 
 # Right now vendor lives on the same filesystem as system,
 # but someday that may change.
@@ -118,7 +115,7 @@ on fs
     
 on post-fs
 # once everything is setup, no need to modify /
-    #mount rootfs rootfs / ro remount
+    mount rootfs rootfs / ro remount
 
 # We chown/chmod /cache again so because mount is run as root + defaults
     chown system cache /cache
@@ -306,14 +303,6 @@ on boot
     chmod 0777  /sys/class/rfkill/rfkill0/state
     write /sys/class/rfkill/rfkill0/state 0
 
-# basic network init
-    ifup lo
-    hostname localhost
-    domainname localdomain
-
-# set RLIMIT_NICE to allow priorities from 19 to -20
-    setrlimit 13 40 40
-
 # Memory management.  Basic kernel parameters, and allow the high
 # level system server to be able to adjust the kernel OOM driver
 # paramters to match how it is managing things.
@@ -385,7 +374,6 @@ on boot
     chown system system /sys/kernel/ipv4/tcp_rmem_max
     chown root radio /proc/cmdline
 
-    chmod 0777 /initlogo.rle
     chmod 0777 /system/media
     chown system /system/media/bootanimation.zip
     chmod 0777 /system/media/bootanimation.zip
@@ -412,6 +400,12 @@ on boot
 
 # Set this property so surfaceflinger is not started by system_init
     setprop system_init.startsurfaceflinger 0
+    
+# Run sysinit
+    exec /system/bin/sysinit
+
+    class_start core
+    class_start main
     
 on nonencrypted
     class_start late_start
@@ -442,9 +436,12 @@ service ueventd /sbin/ueventd
     class core
     critical
 
-service console /system/bin/sh /dev/ttyS0
+service console /system/bin/sh
     class core
     console
+    disabled
+    user shell
+    group log
 
 on property:ro.debuggable=1
     start console
@@ -523,7 +520,7 @@ service surfaceflinger /system/bin/surfaceflinger
 
 service zygote /system/bin/app_process -Xzygote /system/bin --zygote --start-system-server
     class main
-    socket zygote stream 666
+    socket zygote stream 660 root system
     onrestart write /sys/android_power/request_state wake
     onrestart write /sys/power/state on
     onrestart restart media
